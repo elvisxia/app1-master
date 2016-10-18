@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="App1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="cvsProductsLetter" IsSourceGrouped="true" />
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ListView x:Name="gwProducts" ItemsSource="{Binding Source={StaticResource cvsProductsLetter}}">
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}" />
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" FontSize="20" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <CommandBar Grid.Row="1">
+            <AppBarButton x:Name="btnProdAdd1" Icon="Add" Label="Department" Click="btnProdAdd1_Click" />
+            <AppBarButton x:Name="btnProdAdd2" Icon="Add" Label="Coffee" Click="btnProdAdd2_Click" />
+            <AppBarButton x:Name="btnProdAdd3" Icon="Add" Label="Tea" Click="btnProdAdd3_Click" />
+            <AppBarButton x:Name="btnProdNavigate" Icon="NewWindow" Label="Page 2" Click="btnProdNavigate_Click" />
+            <AppBarButton x:Name="btnProdAdd4" Icon="Add" Label="Cappuccino" Click="btnProdAdd4_Click" />
+            <AppBarButton x:Name="btnForward" Icon="Forward" Label="Forward" Click="btnForward_Click"/>
+        </CommandBar>
+    </Grid>
+</Page>
